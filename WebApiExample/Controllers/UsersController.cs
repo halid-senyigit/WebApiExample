@@ -20,10 +20,15 @@ namespace WebApiExample.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAllUsers()
+        public ActionResult Get()
         {
-
             return Ok(_usersRepository.GetAll());
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
+        {
+            return Ok(_usersRepository.GetUserById(id));
         }
 
     }
