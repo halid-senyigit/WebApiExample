@@ -23,7 +23,7 @@ namespace WebApiExample.Controllers
         public ActionResult GetAllUsers()
         {
 
-            return Ok(_usersRepository.GetAllUsers());
+            return Ok(_usersRepository.GetAll());
         }
 
     }

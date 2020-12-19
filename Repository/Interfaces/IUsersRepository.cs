@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    public interface IUsersRepository
+    public interface IUsersRepository: IRepository<User>
     {
-        IEnumerable<User> GetAllUsers();
+
     }
 }
