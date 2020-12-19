@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,20 @@ namespace WebApiExample.Controllers
     [Route("api/Users")]
     public class UsersController: ControllerBase
     {
+        private readonly IUsersRepository _usersRepository;
+
+        public UsersController(
+            IUsersRepository usersRepository
+            )
+        {
+            this._usersRepository = usersRepository;
+        }
+
+        [HttpGet]
         public ActionResult GetAllUsers()
         {
-            return null;
+
+            return Ok(_usersRepository.GetAllUsers());
         }
 
     }
