@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    public interface IUsersRepository: IRepository<User>
+    public interface IUsersRepository: IRepository<Users>
     {
 
     }

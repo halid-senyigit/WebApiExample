@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace DummyData
 {
-    public static class Users
+    public static class UsersData
     {
-        private static List<User> userList = new List<User>();
+        private static List<Users> userList = new List<Users>();
 
     }
 }

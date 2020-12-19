@@ -6,10 +6,10 @@ namespace Repository
 {
     public class UsersRepository : Interfaces.IUsersRepository
     {
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Users> GetAll()
         {
-            return new List<User>(){
-                new User{
+            return new List<Users>(){
+                new Users{
                     Email = "",
                     DateOfBirth = DateTime.Now,
                     FullName = "deneme",
@@ -18,9 +18,9 @@ namespace Repository
             };
         }
 
-        public User GetUserById(int id)
+        public Users GetUserById(int id)
         {
-            return new User
+            return new Users
             {
                 Email = "",
                 DateOfBirth = DateTime.Now,

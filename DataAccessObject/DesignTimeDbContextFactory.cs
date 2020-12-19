@@ -14,7 +14,7 @@ namespace DataAccessObject
         {
             IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.json").Build();
             var builder = new DbContextOptionsBuilder<ModelContext>();
-            var connectionString = configuration.GetConnectionString("SqlWxpressLocale");
+            var connectionString = configuration.GetConnectionString("SqlExpressLocale");
             builder.UseSqlServer(connectionString);
             return new ModelContext(builder.Options);
         }
