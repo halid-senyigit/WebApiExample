@@ -4,14 +4,16 @@ using DataAccessObject;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessObject.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    partial class ModelContextModelSnapshot : ModelSnapshot
+    [Migration("20201219222648_UserPassAdded")]
+    partial class UserPassAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,16 +44,6 @@ namespace DataAccessObject.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserID = 1,
-                            DateOfBirth = new DateTime(2020, 12, 20, 1, 46, 27, 298, DateTimeKind.Local).AddTicks(9529),
-                            Email = "mail@mail.com",
-                            FullName = "isim soyisim",
-                            Password = "123"
-                        });
                 });
 #pragma warning restore 612, 618
         }

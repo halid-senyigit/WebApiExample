@@ -3,9 +3,9 @@ using System;
 
 namespace DataAccessObject
 {
-    public class ModelContext: DbContext
+    public class ModelContext : DbContext
     {
-        public ModelContext(DbContextOptions opt): base(opt)
+        public ModelContext(DbContextOptions opt) : base(opt)
         {
 
         }
@@ -16,7 +16,14 @@ namespace DataAccessObject
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Users>().HasData(
+                new Users {  UserID = 1,  FullName = "isim soyisim", DateOfBirth = DateTime.Now, Email = "mail@mail.com", Password = "123" }
+            );
         }
     }
 }

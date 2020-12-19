@@ -1,4 +1,5 @@
 using DataAccessObject;
+using DummyData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,9 @@ namespace WebApiExample
             var connection = new ModelContext(builder.Options);
 
             services.AddScoped<IUsersRepository, UsersRepository>(x => new UsersRepository(connection));
+
+            //services.AddScoped<IUsersRepository, UsersData>();
+
             services.AddControllers();
         }
 
