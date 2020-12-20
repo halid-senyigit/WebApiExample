@@ -17,22 +17,32 @@ namespace WebApiExample
 {
     public class Startup
     {
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
 
-            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.json").Build();
-            var builder = new DbContextOptionsBuilder<ModelContext>();
-            var connectionString = configuration.GetConnectionString("SqlExpressLocal");
-            builder.UseSqlServer(connectionString);
-            var connection = new ModelContext(builder.Options);
+            services.AddDbContext<ModelContext>(options => {
+                options.UseSqlServer(Configuration["ConnectionStrings:SqlExpressLocal"].ToString());
+            });
 
-            services.AddScoped<IUsersRepository, UsersRepository>(x => new UsersRepository(connection));
+            services.AddScoped<IUsersRepository, UsersRepository>();
 
+
+            // for Mock Data =>
             //services.AddScoped<IUsersRepository, UsersData>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
             services.AddControllers();
         }
 

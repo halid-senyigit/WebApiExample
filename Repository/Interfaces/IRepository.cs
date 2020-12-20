@@ -7,6 +7,8 @@ namespace Repository.Interfaces
     public interface IRepository<T> where T: class, new()
     {
         IEnumerable<T> GetAll();
-        T GetUserById(int id);
+        T GetById(int id);
+
+        int SaveChanges();
     }
 }

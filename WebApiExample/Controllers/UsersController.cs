@@ -36,7 +36,7 @@ namespace WebApiExample.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            var userFromRepo = _usersRepository.GetUserById(id);
+            var userFromRepo = _usersRepository.GetById(id);
             var userMapped = _mapper.Map<UserDTO>(userFromRepo);
             return Ok(userMapped);
         }

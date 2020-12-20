@@ -8,6 +8,6 @@ namespace Repository.Interfaces
 {
     public interface IUsersRepository: IRepository<Users>
     {
-
+        void UpdatePassword(int userId, string password);
     }
 }

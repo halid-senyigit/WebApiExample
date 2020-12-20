@@ -21,7 +21,7 @@ namespace DummyData
             };
         }
 
-        public Users GetUserById(int id)
+        public Users GetById(int id)
         {
             return new Users
             {
@@ -30,6 +30,16 @@ namespace DummyData
                 FullName = "dummy data deneme",
                 UserID = 2
             };
+        }
+
+        public int SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePassword(int userId, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }

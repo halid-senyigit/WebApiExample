@@ -21,9 +21,21 @@ namespace Repository
             return _db.Users.ToList();
         }
 
-        public Users GetUserById(int id)
+        public Users GetById(int id)
         {
             return _db.Users.FirstOrDefault(n => n.UserID == id);
+        }
+
+        
+        public void UpdatePassword(int userId, string password)
+        {
+            var user = _db.Users.Find(userId);
+            user.Password = password;
+        }
+
+        public int SaveChanges()
+        {
+            return _db.SaveChanges();
         }
     }
 }
