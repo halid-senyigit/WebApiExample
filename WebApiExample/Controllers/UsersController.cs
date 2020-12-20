@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Repository.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiExample.DataTransferObjects;
 
 namespace WebApiExample.Controllers
 {
@@ -11,24 +14,31 @@ namespace WebApiExample.Controllers
     public class UsersController: ControllerBase
     {
         private readonly IUsersRepository _usersRepository;
+        private readonly IMapper _mapper;
 
         public UsersController(
-            IUsersRepository usersRepository
+            IUsersRepository usersRepository,
+            IMapper mapper
             )
         {
             this._usersRepository = usersRepository;
+            this._mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_usersRepository.GetAll());
+            var usersFromRepo = _usersRepository.GetAll();
+            var usersMapped = _mapper.Map<IEnumerable<UserDTO>>(usersFromRepo);
+            return Ok(usersMapped);
         }
 
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            return Ok(_usersRepository.GetUserById(id));
+            var userFromRepo = _usersRepository.GetUserById(id);
+            var userMapped = _mapper.Map<UserDTO>(userFromRepo);
+            return Ok(userMapped);
         }
 
     }

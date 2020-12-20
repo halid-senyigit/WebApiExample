@@ -1,3 +1,4 @@
+using AutoMapper;
 using DataAccessObject;
 using DummyData;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository;
 using Repository.Interfaces;
+using System;
 using System.Configuration;
 using System.IO;
 
@@ -30,6 +32,7 @@ namespace WebApiExample
 
             //services.AddScoped<IUsersRepository, UsersData>();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
         }
 
