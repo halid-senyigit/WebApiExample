@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository.Interfaces
 {
@@ -9,6 +10,8 @@ namespace Repository.Interfaces
         IEnumerable<T> GetAll();
         T GetById(int id);
 
+        void ChangeEntityState(EntityState entityState);
+        
         int SaveChanges();
     }
 }

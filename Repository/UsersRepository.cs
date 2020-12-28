@@ -12,14 +12,15 @@ namespace Repository
 
         public UsersRepository(
             ModelContext db
-            )
+            ): base(db)
         {
             this._db = db;
         }
 
         public void UpdatePassword(int userId, string password)
         {
-            throw new NotImplementedException();
+            base.GetById(userId).Password = password;
+            base.ChangeEntityState(Microsoft.EntityFrameworkCore.EntityState.Modified);
         }
     }
 }

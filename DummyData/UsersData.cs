@@ -1,4 +1,5 @@
 ﻿using DataAccessObject;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,11 @@ namespace DummyData
     public class UsersData: IUsersRepository
     {
         private static List<Users> userList = new List<Users>();
+
+        public void ChangeEntityState(EntityState entityState)
+        {
+            throw new NotImplementedException();
+        }
 
         public IEnumerable<Users> GetAll()
         {
