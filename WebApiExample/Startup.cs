@@ -31,7 +31,7 @@ namespace WebApiExample
         {
 
             services.AddDbContext<ModelContext>(options => {
-                options.UseSqlServer(Configuration["ConnectionStrings:SqlExpressLocal"].ToString());
+                options.UseMySQL(Configuration["ConnectionStrings:MySQLConnection"].ToString());
             });
 
             services.AddScoped<IUsersRepository, UsersRepository>();

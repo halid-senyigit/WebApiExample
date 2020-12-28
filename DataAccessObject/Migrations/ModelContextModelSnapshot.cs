@@ -3,7 +3,6 @@ using System;
 using DataAccessObject;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessObject.Migrations
@@ -15,29 +14,27 @@ namespace DataAccessObject.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.1");
+                .HasAnnotation("ProductVersion", "3.1.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("DataAccessObject.Users", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("UserID");
 
@@ -47,7 +44,7 @@ namespace DataAccessObject.Migrations
                         new
                         {
                             UserID = 1,
-                            DateOfBirth = new DateTime(2020, 12, 20, 1, 46, 27, 298, DateTimeKind.Local).AddTicks(9529),
+                            DateOfBirth = new DateTime(2020, 12, 28, 6, 39, 50, 520, DateTimeKind.Local).AddTicks(7692),
                             Email = "mail@mail.com",
                             FullName = "isim soyisim",
                             Password = "123"
