@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace DataAccessObject.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace DataAccessObject.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserID", "DateOfBirth", "Email", "FullName", "Password" },
-                values: new object[] { 1, new DateTime(2020, 12, 28, 6, 39, 50, 520, DateTimeKind.Local).AddTicks(7692), "mail@mail.com", "isim soyisim", "123" });
+                values: new object[] { 1, new DateTime(2021, 1, 3, 12, 17, 1, 718, DateTimeKind.Local).AddTicks(4010), "mail@mail.com", "isim soyisim", "123" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

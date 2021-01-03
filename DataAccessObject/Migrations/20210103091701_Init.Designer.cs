@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessObject.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20201228033950_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210103091701_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,7 +46,7 @@ namespace DataAccessObject.Migrations
                         new
                         {
                             UserID = 1,
-                            DateOfBirth = new DateTime(2020, 12, 28, 6, 39, 50, 520, DateTimeKind.Local).AddTicks(7692),
+                            DateOfBirth = new DateTime(2021, 1, 3, 12, 17, 1, 718, DateTimeKind.Local).AddTicks(4010),
                             Email = "mail@mail.com",
                             FullName = "isim soyisim",
                             Password = "123"
