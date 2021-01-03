@@ -48,9 +48,10 @@ namespace WebApiExample.Controllers
                     new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                    new Claim("Id", user.UserID.ToString()),
-                    new Claim("FullName", user.FullName),
-                    new Claim("Email", user.Email)
+                    new Claim("UserID", user.UserID.ToString()),
+                    new Claim(ClaimTypes.Name, user.FullName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, "user")
                    };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -66,12 +67,22 @@ namespace WebApiExample.Controllers
 
         // api/Token
         [HttpGet]
-        [Authorize]
-        public ActionResult AccessControl()
+        [Authorize("admin")]
+        public ActionResult AdminAccessControl()
         {
+            // returns forbidden 
             return Ok("connection established");
         }
         
+
+        // api/Token
+        [HttpGet("{id}")]
+        [Authorize("user")]
+        public ActionResult UserAccessControl(int id)
+        {
+            // returns Ok 
+            return Ok("connection established");
+        }
 
 
     }
