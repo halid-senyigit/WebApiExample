@@ -12,7 +12,7 @@ namespace WebApiExample.Profiles
     {
         public UserProfile()
         {
-            CreateMap<Users, UserDTO>();
+            CreateMap<User, UserDTO>();
 
         }
     }

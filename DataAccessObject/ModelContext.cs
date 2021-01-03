@@ -10,7 +10,7 @@ namespace DataAccessObject
 
         }
 
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
 
@@ -21,8 +21,8 @@ namespace DataAccessObject
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Users>().HasData(
-                new Users {  UserID = 1,  FullName = "isim soyisim", DateOfBirth = DateTime.Now, Email = "mail@mail.com", Password = "123" }
+            modelBuilder.Entity<User>().HasData(
+                new User {  UserID = 1,  FullName = "isim soyisim", DateOfBirth = DateTime.Now, Email = "mail@mail.com", Password = "123" }
             );
         }
     }

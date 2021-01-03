@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessObject
 {
-    public class Users
+    public class User
     {
         [Key]
         public int UserID { get; set; }

@@ -6,8 +6,10 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    public interface IUsersRepository: IRepository<Users>
+    public interface IUsersRepository: IRepository<User>
     {
         void UpdatePassword(int userId, string password);
+
+        User GetUserByCredentials(string email, string password);
     }
 }

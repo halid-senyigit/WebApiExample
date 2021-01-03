@@ -3,39 +3,32 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DummyData
 {
     public class UsersData: IUsersRepository
     {
-        private static List<Users> userList = new List<Users>();
+        private static List<User> userList = new List<User>();
 
         public void ChangeEntityState(EntityState entityState)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Users> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return new List<Users>(){
-                new Users{
-                    Email = "dummy data mail",
-                    DateOfBirth = DateTime.Now,
-                    FullName = "dummy data deneme",
-                    UserID = 2
-                }
-            };
+            return userList;
         }
 
-        public Users GetById(int id)
+        public User GetById(int id)
         {
-            return new Users
-            {
-                Email = "dummy data  mail get by id",
-                DateOfBirth = DateTime.Now,
-                FullName = "dummy data deneme",
-                UserID = 2
-            };
+            return userList.FirstOrDefault(n => n.UserID == id);
+        }
+
+        public User GetUserByCredentials(string email, string password)
+        {
+            throw new NotImplementedException();
         }
 
         public int SaveChanges()
